@@ -11,6 +11,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'bootstrap-sass'
 gem 'foreigner'
+gem 'cancancan', '~> 1.10'
 
 # Gems used only for assets and not required
 # in production environments by default.

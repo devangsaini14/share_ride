@@ -1,6 +1,7 @@
 class RolesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :set_role, :only => [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   respond_to :html
 
@@ -10,6 +11,11 @@ class RolesController < ApplicationController
   end
 
   def show
+    if @role.users.length == 0
+      @assosciated_users = "None"
+    else
+      @assosciated_users = @role.users.map(&:name).join(", ")
+    end
     respond_with(@role)
   end
 
