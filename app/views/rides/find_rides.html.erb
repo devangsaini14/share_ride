@@ -1,0 +1,9 @@
+<%= form_tag find_rides_rides_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag "search[source]" %>
+    <%= text_field_tag "search[destination]" %>
+    <%= text_field_tag "search[seats]" %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
+  <%= link_to 'Back', rides_path %>

@@ -1,7 +1,4 @@
 HackathonApp::Application.routes.draw do
-  resources :rides
-
-
   resources :items
   resources :roles
   devise_for :users
@@ -12,6 +9,11 @@ HackathonApp::Application.routes.draw do
     namespace :v1 do
       resources :rides
 	  end
+  end
+  resources :rides do
+    collection do
+      get 'find_rides'
+    end
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

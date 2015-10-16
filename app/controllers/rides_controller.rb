@@ -36,8 +36,17 @@ class RidesController < ApplicationController
     respond_with(@ride)
   end
 
+  def find_rides
+    if params[:search].present?
+      @rides = Ride.search(params[:search])
+      @search = true
+      render :index
+    end    
+  end
+
   private
     def set_ride
       @ride = Ride.find(params[:id])
+      @search = false
     end
 end
