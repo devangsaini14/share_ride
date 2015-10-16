@@ -8,6 +8,11 @@ HackathonApp::Application.routes.draw do
   scope "/admin" do
     resources :users
   end
+  namespace :api do
+    namespace :v1 do
+      resources :rides
+	  end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
