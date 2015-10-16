@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Source:</b>
+  <%= @ride.source %>
+</p>
+
+<p>
+  <b>Source latitude:</b>
+  <%= @ride.source_latitude %>
+</p>
+
+<p>
+  <b>Source longitude:</b>
+  <%= @ride.source_longitude %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%= @ride.destination %>
+</p>
+
+<p>
+  <b>Destination latitude:</b>
+  <%= @ride.destination_latitude %>
+</p>
+
+<p>
+  <b>Destination longitude:</b>
+  <%= @ride.destination_longitude %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @ride.price %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @ride.date %>
+</p>
+
+<p>
+  <b>Seats:</b>
+  <%= @ride.seats %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @ride.contact %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @ride.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_ride_path(@ride) %> |
+<%= link_to 'Back', rides_path %>

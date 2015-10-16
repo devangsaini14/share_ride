@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151015095615) do
+ActiveRecord::Schema.define(:version => 20151016044059) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(:version => 20151015095615) do
   end
 
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
+  create_table "rides", :force => true do |t|
+    t.string   "source"
+    t.float    "source_latitude"
+    t.float    "source_longitude"
+    t.string   "destination"
+    t.float    "destination_latitude"
+    t.float    "destination_longitude"
+    t.float    "price"
+    t.date     "date"
+    t.integer  "seats"
+    t.integer  "contact"
+    t.string   "email"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

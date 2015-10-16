@@ -1,4 +1,7 @@
 HackathonApp::Application.routes.draw do
+  resources :rides
+
+
   resources :items
   resources :roles
   devise_for :users

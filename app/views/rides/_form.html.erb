@@ -1,0 +1,61 @@
+<%= form_for(@ride) do |f| %>
+  <% if @ride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+
+      <ul>
+      <% @ride.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :source_latitude %><br />
+    <%= f.text_field :source_latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :source_longitude %><br />
+    <%= f.text_field :source_longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :destination %><br />
+    <%= f.text_field :destination %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_latitude %><br />
+    <%= f.text_field :destination_latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_longitude %><br />
+    <%= f.text_field :destination_longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :seats %><br />
+    <%= f.number_field :seats %>
+  </div>
+  <div class="field">
+    <%= f.label :contact %><br />
+    <%= f.number_field :contact %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

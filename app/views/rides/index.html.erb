@@ -1,0 +1,43 @@
+<h1>Listing rides</h1>
+
+<table>
+  <tr>
+    <th>Source</th>
+    <th>Source latitude</th>
+    <th>Source longitude</th>
+    <th>Destination</th>
+    <th>Destination latitude</th>
+    <th>Destination longitude</th>
+    <th>Price</th>
+    <th>Date</th>
+    <th>Seats</th>
+    <th>Contact</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rides.each do |ride| %>
+  <tr>
+    <td><%= ride.source %></td>
+    <td><%= ride.source_latitude %></td>
+    <td><%= ride.source_longitude %></td>
+    <td><%= ride.destination %></td>
+    <td><%= ride.destination_latitude %></td>
+    <td><%= ride.destination_longitude %></td>
+    <td><%= ride.price %></td>
+    <td><%= ride.date %></td>
+    <td><%= ride.seats %></td>
+    <td><%= ride.contact %></td>
+    <td><%= ride.email %></td>
+    <td><%= link_to 'Show', ride %></td>
+    <td><%= link_to 'Edit', edit_ride_path(ride) %></td>
+    <td><%= link_to 'Destroy', ride, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ride', new_ride_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  source: MyString
+  source_latitude: 1.5
+  source_longitude: 1.5
+  destination: MyString
+  destination_latitude: 1.5
+  destination_longitude: 1.5
+  price: 1.5
+  date: 2015-10-16
+  seats: 1
+  contact: 1
+  email: MyString
+
+two:
+  source: MyString
+  source_latitude: 1.5
+  source_longitude: 1.5
+  destination: MyString
+  destination_latitude: 1.5
+  destination_longitude: 1.5
+  price: 1.5
+  date: 2015-10-16
+  seats: 1
+  contact: 1
+  email: MyString
