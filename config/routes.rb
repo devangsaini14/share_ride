@@ -65,9 +65,9 @@ HackathonApp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
 
-  authenticated :user do
-    root :to => 'rides#index', :as => :authenticated_root
-  end
+#  authenticated :user do
+#    root :to => 'rides#index', :as => :authenticated_root
+#  end
   
   root :to => 'home#index'
 
