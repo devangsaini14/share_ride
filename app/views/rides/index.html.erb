@@ -7,11 +7,7 @@
   <table id ="rides_table">
     <tr>
       <th>Source</th>
-      <th>Source latitude</th>
-      <th>Source longitude</th>
       <th>Destination</th>
-      <th>Destination latitude</th>
-      <th>Destination longitude</th>
       <th>Price</th>
       <th>Date</th>
       <th>Seats</th>
@@ -26,11 +22,7 @@
     <% @rides.each do |ride| %>
       <tr>
         <td><%= ride.source %></td>
-        <td><%= ride.source_latitude %></td>
-        <td><%= ride.source_longitude %></td>
         <td><%= ride.destination %></td>
-        <td><%= ride.destination_latitude %></td>
-        <td><%= ride.destination_longitude %></td>
         <td><%= ride.price %></td>
         <td><%= ride.date %></td>
         <td><%= ride.seats %></td>
