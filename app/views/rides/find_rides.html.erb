@@ -1,9 +1,18 @@
 <%= form_tag find_rides_rides_path, :method => 'get' do %>
-  <p>
+  <div class="field">
+    <%= label_tag :source %><br />
     <%= text_field_tag "search[source]" %>
+  </div>
+  <div class="field">
+    <%= label_tag :destination %><br />
     <%= text_field_tag "search[destination]" %>
+  </div>
+  <div class="field">
+    <%= label_tag :seats %><br />
     <%= text_field_tag "search[seats]" %>
-    <%= submit_tag "Search" %>
-  </p>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Search" %><br />
+  </div>
 <% end %>
-  <%= link_to 'Back', rides_path %>
+<%= link_to 'Back', rides_path %>

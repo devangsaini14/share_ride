@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :role_id
   
   belongs_to :role
-  has_many :items, :dependent => :destroy
+  has_many :rides
   validates_presence_of :name
   before_save :assign_role
 

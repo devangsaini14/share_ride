@@ -31,6 +31,7 @@ class RidesController < ApplicationController
 
   def create
     @ride = Ride.new(params[:ride])
+    @ride.user_id = current_user.id
     @ride.save
     respond_with(@ride)
     @hash = Gmaps4rails.build_markers(@ride) do |ride, marker|

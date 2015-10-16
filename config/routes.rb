@@ -66,7 +66,7 @@ HackathonApp::Application.routes.draw do
   # just remember to delete public/index.html.
 
   authenticated :user do
-    root :to => 'items#index', :as => :authenticated_root
+    root :to => 'rides#index', :as => :authenticated_root
   end
   
   root :to => 'home#index'

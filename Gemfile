@@ -21,10 +21,10 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-  gem 'jquery-datatables-rails', '~> 3.3.0'
   gem 'gmaps4rails'
   gem 'underscore-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-datatables-rails'
 end
 
 group :development do
