@@ -18,12 +18,25 @@ class RidesController < ApplicationController
   end
 
   def edit
+    @rides = Ride.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@rides) do |rides, marker|
+      marker.lat rides.source_latitude
+      marker.lng rides.source_longitude
+    end
+    @hash2 = Gmaps4rails.build_markers(@rides) do |rides, marker|
+      marker.lat rides.destination_latitude
+      marker.lng rides.destination_longitude
+    end
   end
 
   def create
     @ride = Ride.new(params[:ride])
     @ride.save
     respond_with(@ride)
+    @hash = Gmaps4rails.build_markers(@ride) do |ride, marker|
+      marker.lat ride.source_latitude
+      marker.lng ride.source_longitude
+    end
   end
 
   def update
