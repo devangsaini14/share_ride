@@ -1,8 +1,8 @@
-class Api::V1::RidesController < BaseApiController
+class Api::V1::RidesController < ApplicationController
   before_filter :set_ride, only: [:show, :update, :destroy]
 
   def index
-    @rides = Ride.all
+    @rides = params[:search].present? ? Ride.search(params[:search]) : Ride.all
     render json: @rides
   end
 
@@ -12,7 +12,9 @@ class Api::V1::RidesController < BaseApiController
 
   def create
     @ride = Ride.new
+    @json = JSON.parse(request.body.read)
     @ride.assign_attributes(@json['ride'])
+    puts @ride.attributes
     if @ride.save
       render nothing: true, status: 200
     else
@@ -21,6 +23,7 @@ class Api::V1::RidesController < BaseApiController
   end
 
   def update
+    @json = JSON.parse(request.body.read)
     @ride.assign_attributes(@json['ride'])
     if @ride.save
         render json: @ride, status: 200
@@ -34,7 +37,6 @@ class Api::V1::RidesController < BaseApiController
     head :no_content
   end
 
- 
   private
 
     def set_ride

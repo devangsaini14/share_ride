@@ -1,5 +1,5 @@
 class BaseApiController < ApplicationController
-before_filter :parse_request#, :authenticate_user_from_token!
+# before_filter :parse_request#, :authenticate_user_from_token!
 
 private
    def authenticate_user_from_token!
@@ -15,7 +15,9 @@ private
      end
    end
 
-   def parse_request
-     @json = JSON.parse(request.body.read)
-   end
+   # def parse_request
+   #   puts request.body.read
+   #   request.body.rewind
+   #   @json = JSON.parse(request.body.read)
+   # end
 end
