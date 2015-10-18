@@ -14,19 +14,18 @@ gem "less-rails"
 gem 'foreigner'
 gem 'cancancan', '~> 1.10'
 gem 'protected_attributes'
-
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem 'uglifier', '>= 1.0.3'
+gem 'jquery-datatables-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
   gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-  gem 'gmaps4rails'
-  gem 'underscore-rails'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-datatables-rails'
+  
 end
 
 group :development do
