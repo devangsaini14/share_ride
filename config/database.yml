@@ -32,4 +32,7 @@ test:
   socket: /var/run/mysqld/mysqld.sock
 
 production:
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  database: hackathon_app_production
+  pool: 5
+  timeout: 5000

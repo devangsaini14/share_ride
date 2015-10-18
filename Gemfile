@@ -33,6 +33,14 @@ group :development do
   gem 'rails_layout'
 end
 
+group :production, :staging do
+  gem "pg"
+end
+
+# group :development, :test do
+#   gem "sqlite3"
+# end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
