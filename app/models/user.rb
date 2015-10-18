@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   
   belongs_to :role
   has_many :rides
-  validates_presence_of :name
+  # validates_presence_of :name
   before_save :assign_role
 
   def assign_role

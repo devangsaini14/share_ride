@@ -1,47 +1,46 @@
-<% if @rides.present?%>
-  <% if @search %>
-    <h1><%= "#{@rides.count } Rides found for you"%> </h1>
-  <% else %>
-    <h1>Listing Rides</h1>
-  <% end %>
-  <table id ="rides_table">
+<%- model_class = Ride -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <th>Source</th>
-      <th>Destination</th>
-      <th>Price</th>
-      <th>Date</th>
-      <th>Seats</th>
-      <th>Onwer</th>
-      <th>Contact</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:source) %></th>
+      <th><%= model_class.human_attribute_name(:destination) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:seats) %></th>
+      <th><%= model_class.human_attribute_name(:contact) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:offered_by) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
-
+  </thead>
+  <tbody>
     <% @rides.each do |ride| %>
       <tr>
-        <td><%= ride.source %></td>
+        <td><%= link_to ride.source, ride_path(ride) %></td>
         <td><%= ride.destination %></td>
         <td><%= ride.price %></td>
         <td><%= ride.date %></td>
         <td><%= ride.seats %></td>
-        <td><%= ride.user.present? ? ride.user.name : 'N/A'  %></td>
         <td><%= ride.contact %></td>
         <td><%= ride.email %></td>
-        <td><%= link_to 'Show', ride %></td>
-        <td><%= link_to 'Edit', edit_ride_path(ride) %></td>
-        <td><%= link_to 'Destroy', ride, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= ride.user.name %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_ride_path(ride), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      ride_path(ride),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
-  </table>
-<% end %>
-<br />
-<h1><%= "No rides found for you" if @rides.count == 0%> </h1>
-<%= link_to 'New Ride', new_ride_path %> | <%= link_to 'Find Ride', find_rides_rides_path %>
+  </tbody>
+</table>
 
-<script>
-  $( document ).ready(function() {
-    $('#rides_table').dataTable()
-  });
-</script>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_ride_path,
+            :class => 'btn btn-primary' %>

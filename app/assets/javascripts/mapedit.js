@@ -1,10 +1,3 @@
-<%- model_class = Ride -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
-<%= render :partial => 'form' %>
-<script type="text/javascript">
-
 var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
 
@@ -36,4 +29,3 @@ handler.buildMap({ internal: {id: 'map'}}, function(){
   calcRoute(source_lat,source_lng,dest_lat,dest_lng);
   directionsDisplay.setMap(handler.getMap());
 });
-</script>

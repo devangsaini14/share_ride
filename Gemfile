@@ -1,23 +1,25 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.21'
+gem 'rails', '4.2.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '~> 0.3.10'
+gem 'mysql2', '~> 0.3.20'
 gem 'therubyracer'
 gem 'devise'
-gem 'foundation-rails'
-gem 'bootstrap-sass'
+gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'
+gem "less-rails"
 gem 'foreigner'
 gem 'cancancan', '~> 1.10'
+gem 'protected_attributes'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

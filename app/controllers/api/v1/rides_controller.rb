@@ -1,5 +1,5 @@
 class Api::V1::RidesController < ApplicationController
-  before_filter :set_ride, only: [:show, :update, :destroy]
+  before_action :set_ride, only: [:show, :update, :destroy]
 
   def index
     @rides = params[:search].present? ? Ride.search(params[:search]) : Ride.all
@@ -41,6 +41,10 @@ class Api::V1::RidesController < ApplicationController
 
     def set_ride
       @ride = Ride.find(params[:id])
+    end
+
+    def ride_params
+      params.require(:home_property).permit(:contact, :date, :destination, :destination_latitude, :destination_longitude, :email, :price, :seats, :source, :source_latitude, :source_longitude)
     end
 
 end

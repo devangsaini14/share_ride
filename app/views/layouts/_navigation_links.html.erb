@@ -1,11 +1,18 @@
 <%# add navigation links to this file %>
-<% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Rides', rides_path %></li>
-  <li><%= link_to 'Offer Ride', new_ride_path %></li>
-  <li><%= link_to 'Find Ride',find_rides_rides_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-<% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
-<% end %>
+<ul class="nav navbar-nav">
+  <% if user_signed_in? %>
+	  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+	  <li><%= link_to 'Rides', rides_path %></li>
+	  <li><%= link_to 'Offer Ride', new_ride_path %></li>
+	  <li><%= link_to 'Find Ride',find_rides_rides_path %></li>
+  <% end %>
+</ul>	
+<ul class="nav navbar-nav navbar-right">
+  <% if user_signed_in? %>
+  	<li><%= link_to 'Log out', destroy_user_session_path, :method=>'delete' %></li>
+  <% else %>  
+	  <li><%= link_to 'Login', new_user_session_path %></li>
+	  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+	<% end %>	  
+</ul>
+

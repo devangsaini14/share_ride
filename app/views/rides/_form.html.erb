@@ -1,45 +1,94 @@
-<%= form_for(@ride) do |f| %>
-  <% if @ride.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+<%= form_for @ride, :html => { :class => "form-horizontal ride" } do |f| %>
 
-      <ul>
-      <% @ride.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <% if @ride.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @ride.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :source %><br />
-    <%= f.text_field :source %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class= "col-md-4">
+        <div class="control-group">
+          <%= f.label :source, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :source, :class => 'form-control' %>
+          </div>
+          <%= error_span(@ride[:source]) %>
+        </div>
+        <div class="control-group">
+          <%= f.label :destination, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :destination, :class => 'form-control' %>
+          </div>
+          <%= error_span(@ride[:destination]) %>
+        </div>
+        <div class="control-group">
+          <%= f.label :price, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :price, :class => 'form-control' %>
+          </div>
+          <%= error_span(@ride[:price]) %>
+        </div>
+        <div class="control-group">
+          <%= f.label :date, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.date_select :date %>
+          </div>
+          <%= error_span(@ride[:date]) %>
+        </div>
+        <div class="control-group">
+          <%= f.label :seats, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :seats, :class => 'form-control' %>
+          </div>
+          <%= error_span(@ride[:seats]) %>
+        </div>
+        <div class="control-group">
+          <%= f.label :contact, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :contact, :class => 'form-control' %>
+          </div>
+          <%= error_span(@ride[:contact]) %>
+        </div>
+        <div class="control-group">
+          <%= f.label :email, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :email, :class => 'form-control' %>
+          </div>
+          <%= error_span(@ride[:email]) %>
+        </div>
+        <div class="control-group">
+          <%= f.hidden_field  :source_latitude %>
+        </div>
+        <div class="control-group">
+          <%= f.hidden_field  :source_longitude %>
+        </div>
+        <div class="control-group">
+          <%= f.hidden_field :destination_latitude %>
+        </div>  
+        <div class="control-group">
+          <%= f.hidden_field :destination_longitude %>
+        </div>
+      </div>
+      <div class= "col-md-4 col-md-offset-2">
+        <div id="map" style='width: 400px; height: 400px;'></div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :destination %><br />
-    <%= f.text_field :destination %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :seats %><br />
-    <%= f.number_field :seats %>
-  </div>
-  <div class="field">
-    <%= f.label :contact %><br />
-    <%= f.number_field :contact %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div style="padding:10px"> 
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            rides_path, :class => 'btn btn-default' %>
   </div>
 <% end %>
+<%= javascript_include_tag "mapedit", "data-turbolinks-track" => true %>
+  

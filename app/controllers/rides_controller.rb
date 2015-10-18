@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
-  before_filter :set_ride, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_ride, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   respond_to :html
 
   def index
@@ -30,7 +30,7 @@ class RidesController < ApplicationController
   end
 
   def create
-    @ride = Ride.new(params[:ride])
+    @ride = Ride.new(ride_params)
     @ride.user_id = current_user.id
     @ride.save
     respond_with(@ride)
@@ -38,10 +38,14 @@ class RidesController < ApplicationController
       marker.lat ride.source_latitude
       marker.lng ride.source_longitude
     end
+    @hash2 = Gmaps4rails.build_markers(@rides) do |rides, marker|
+      marker.lat rides.destination_latitude
+      marker.lng rides.destination_longitude
+    end
   end
 
   def update
-    @ride.update_attributes(params[:ride])
+    @ride.update_attributes(ride_params)
     respond_with(@ride)
   end
 
@@ -62,5 +66,9 @@ class RidesController < ApplicationController
     def set_ride
       @ride = Ride.find(params[:id])
       @search = false
+    end
+
+    def ride_params
+      params.require(:ride).permit(:contact, :date, :destination, :destination_latitude, :destination_longitude, :email, :price, :seats, :source, :source_latitude, :source_longitude)
     end
 end
